@@ -7,6 +7,9 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--version"
   NETLIFY_USE_PNPM = "true"
+  NEXT_TELEMETRY_DISABLED = "1"
+  # Disable experimental features in production
+  NEXT_DISABLE_EXPERIMENTAL = "1"
 
 # Ensures node_modules caching works correctly
 [build.processing]

@@ -3,11 +3,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   transpilePackages: ["@workspace/ui"],
+  // More stable config for production builds on Netlify
   experimental: {
-    reactCompiler: true,
-    ppr: true,
-    // inlineCss: true,
+    // Disable experimental features for Netlify builds
+    // reactCompiler: process.env.NODE_ENV === 'development',
+    // ppr: process.env.NODE_ENV === 'development',
   },
+  // Ensure proper output for Netlify
+  output: 'standalone',
+  // Disable source maps in production to reduce build time
+  productionBrowserSourceMaps: false,
   logging: {
     fetches: {},
   },
