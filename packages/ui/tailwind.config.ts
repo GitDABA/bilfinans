@@ -15,6 +15,7 @@ const config = {
       fontFamily: {
         geist: ["var(--font-geist)", ...fontFamily.sans],
         mono: ["var(--font-mono)", ...fontFamily.mono],
+        vwag: ["var(--font-vwag)", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",

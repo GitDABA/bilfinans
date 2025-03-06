@@ -5,14 +5,13 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity dev",
+    "dev": "sanity dev --port 3333",
     "format": "prettier --write .",
-    "start": "sanity start",
+    "start": "sanity start --port 3333",
     "lint": "eslint . --fix",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "type": "sanity schema extract && sanity typegen generate --enforce-required-fields",
-    "postinstall": "sanity exec scripts/create-data.ts --with-user-token"
+    "type": "sanity schema extract && sanity typegen generate --enforce-required-fields"
   },
   "keywords": [
     "sanity"

@@ -2,6 +2,7 @@ import "@workspace/ui/globals.css";
 
 import { revalidatePath, revalidateTag } from "next/cache";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity";
 import { Suspense } from "react";
@@ -28,6 +29,34 @@ const fontMono = Geist_Mono({
   display: "swap",
 });
 
+// VWAGTheSans font configuration for Bilfinans
+const vwagTheSansFont = localFont({
+  src: [
+    {
+      path: '../../public/fonts/VWAGTheSans-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/VWAGTheSans-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/VWAGTheSans-Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/VWAGTheSans-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-vwag',
+  display: 'swap',
+});
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -38,7 +67,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontGeist.variable} ${fontMono.variable} font-geist antialiased`}
+        className={`${fontGeist.variable} ${fontMono.variable} ${vwagTheSansFont.variable} font-geist antialiased`}
       >
         <Providers>
           <Suspense fallback={<NavbarSkeleton />}>

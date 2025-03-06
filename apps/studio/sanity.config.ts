@@ -34,7 +34,7 @@ export default defineConfig({
         locations,
       },
       previewUrl: {
-        origin: presentationOriginUrl ?? "http://localhost:3000",
+        origin: presentationOriginUrl ?? "http://localhost:5278",
         previewMode: {
           enable: "/api/presentation-draft",
         },
