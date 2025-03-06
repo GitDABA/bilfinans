@@ -1,0 +1,33 @@
+[build]
+  base = "/"
+  command = "npm install -g pnpm && pnpm install && pnpm turbo run build --filter=web"
+  publish = "apps/web/.next"
+  
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--version"
+  NETLIFY_USE_PNPM = "true"
+
+# Ensures node_modules caching works correctly
+[build.processing]
+  skip_processing = false
+
+# Correctly handle Next.js routing
+[[redirects]]
+  from = "/*"
+  to = "/_next/static/:splat"
+  status = 200
+  force = true
+  conditions = {Path = ["/_next/static/*"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/api/:splat"
+  status = 200
+  force = true
+  conditions = {Path = ["/api/*"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
