@@ -5,18 +5,20 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@workspace/ui"],
   // More stable config for production builds on Netlify
   experimental: {
-    // Disable experimental features for Netlify builds
-    // reactCompiler: process.env.NODE_ENV === 'development',
-    // ppr: process.env.NODE_ENV === 'development',
+    // Explicitly disable all experimental features for Netlify builds
+    reactCompiler: false,
+    ppr: false,
   },
   // Ensure proper output for Netlify
-  output: 'standalone',
+  output: 'export',
+  distDir: 'out',
   // Disable source maps in production to reduce build time
   productionBrowserSourceMaps: false,
   logging: {
     fetches: {},
   },
   images: {
+    unoptimized: true,
     minimumCacheTTL: 31536000,
     remotePatterns: [
       {
