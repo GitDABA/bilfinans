@@ -1,6 +1,6 @@
 [build]
   base = "/"
-  command = "pnpm install && pnpm turbo run build --filter=web"
+  command = "./netlify-build.sh"
   publish = "apps/web/.next"
   
 [build.environment]
