@@ -1,29 +1,42 @@
 import type { NextConfig } from "next";
 
+// This file is used to configure Next.js
+// See https://nextjs.org/docs/api-reference/next.config.js/introduction
 const nextConfig: NextConfig = {
-  /* config options here */
+  swcMinify: true,
+  reactStrictMode: true,
   transpilePackages: ["@workspace/ui"],
-  // More stable config for production builds on Netlify
+  
+  // Optimize for Netlify deployment
   experimental: {
-    // Explicitly disable all experimental features for Netlify builds
+    // Explicitly disable all experimental features
     reactCompiler: false,
     ppr: false,
   },
-  // Use the more compatible serverless output for Netlify plugin
+  
   // Disable source maps in production to reduce build time
   productionBrowserSourceMaps: false,
+  
+  // Improve logging for debugging
   logging: {
-    fetches: {},
+    fetches: {
+      fullUrl: true,
+    },
   },
+  
+  // Configure image optimization
   images: {
-    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
     ],
+    minimumCacheTTL: 31536000,
   },
+  
+  // Ensure we generate a standalone Next.js app
+  output: "standalone",
 };
 
 export default nextConfig;
