@@ -9,16 +9,13 @@ const nextConfig: NextConfig = {
     reactCompiler: false,
     ppr: false,
   },
-  // Ensure proper output for Netlify
-  output: 'export',
-  distDir: 'out',
+  // Use the more compatible serverless output for Netlify plugin
   // Disable source maps in production to reduce build time
   productionBrowserSourceMaps: false,
   logging: {
     fetches: {},
   },
   images: {
-    unoptimized: true,
     minimumCacheTTL: 31536000,
     remotePatterns: [
       {
